@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>tree view</title>
+
+    <link rel="stylesheet" href="Style/Master.css" type="text/css" />
+    <script src="Scripts/jquery-1.9.1.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="Style/TreeView.css" type="text/css" />
+    <script src="Scripts/TreeView.js" type="text/javascript"></script>
+    <script src="Scripts/sections.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <table class="treeViewTable">
+        <tr>
+            <td valign="top" width="100%">
+                <div id="wrap">
+                    <div id="container">
+                        <script type="text/javascript" language="javascript">
+                            var zNodes = [
+                                { id: 0, pId: 0, name: 'Point Of Sale Documentation', open: true, icon: 'Images/HomePage.png' },
+                                // { id: 1, pId: 0, name: '.', open: true, icon: 'Images/Server.png', file: 'src/index.html' },
+                                // { id: 2, pId: 1, name: 'User databases', open: true, icon: 'Images/folder.png', file: 'src/User_databases/index.html' },
+                                { id: 1, pId: 0, name: 'Database Properties', open: false, icon: 'Images/Database.png', file: 'src/User_databases/POS/index.html' },
+                                
+                                { id: 2, pId: 1, name: 'Tables', open: false, icon: 'Images/folder.png', file: 'src/User_databases/POS/Tables/Tables.html' },
+                                { id: 3, pId: 2, name: 'finance.InvoiceItems', open: false, icon: 'Images/Table.png', file: 'src/User_databases/POS/Tables/InvoiceItems.html' },
+                                { id: 4, pId: 2, name: 'finance.Invoices', open: false, icon: 'Images/Table.png', file: 'src/User_databases/POS/Tables/Invoices.html' },
+                                { id: 5, pId: 2, name: 'finance.PaymentMethod', open: false, icon: 'Images/Table.png', file: 'src/User_databases/POS/Tables/PaymentMethod.html' },
+                                { id: 6, pId: 2, name: 'finance.Payments', open: false, icon: 'Images/Table.png', file: 'src/User_databases/POS/Tables/Payments.html' },
+                                { id: 7, pId: 2, name: 'identity.Customers', open: false, icon: 'Images/Table.png', file: 'src/User_databases/POS/Tables/Customers.html' },
+                                { id: 8, pId: 2, name: 'masterdata.Category', open: false, icon: 'Images/Table.png', file: 'src/User_databases/POS/Tables/Category.html' },
+                                { id: 9, pId: 2, name: 'masterdata.Products', open: false, icon: 'Images/Table.png', file: 'src/User_databases/POS/Tables/Products.html' },
+
+                                { id: 12, pId: 1, name: 'Views', open: false, icon: 'Images/folder.png', file: 'src/User_databases/POS/Views/Views.html' },
+                                { id: 13, pId: 12, name: 'finance.V_SalesPerMonthEveryYear', open: false, icon: 'Images/View.png', file: 'src/User_databases/POS/Views/V_SalesPerMonthEveryYear.html' },
+                                { id: 14, pId: 12, name: 'pub.V_UnpaidInvoices', open: false, icon: 'Images/View.png', file: 'src/User_databases/POS/Views/V_UnpaidInvoices.html' },
+
+                                { id: 15, pId: 1, name: 'Synonyms', open: false, icon: 'Images/folder.png', file: 'src/User_databases/POS/Synonyms/Synonyms.html' },
+                                { id: 16, pId: 15, name: 'dbo.Category', open: false, icon: 'Images/Synonym.png', file: 'src/User_databases/POS/Synonyms/Category.html' },
+                                { id: 17, pId: 15, name: 'dbo.Customers', open: false, icon: 'Images/Synonym.png', file: 'src/User_databases/POS/Synonyms/Customers.html' },
+                                { id: 18, pId: 15, name: 'dbo.InvoiceItems', open: false, icon: 'Images/Synonym.png', file: 'src/User_databases/POS/Synonyms/InvoiceItems.html' },
+                                { id: 19, pId: 15, name: 'dbo.Invoices', open: false, icon: 'Images/Synonym.png', file: 'src/User_databases/POS/Synonyms/Invoices.html' },
+                                { id: 20, pId: 15, name: 'dbo.PaymentMethod', open: false, icon: 'Images/Synonym.png', file: 'src/User_databases/POS/Synonyms/PaymentMethod.html' },
+                                { id: 21, pId: 15, name: 'dbo.Payments', open: false, icon: 'Images/Synonym.png', file: 'src/User_databases/POS/Synonyms/Payments.html' },
+                                { id: 22, pId: 15, name: 'dbo.Products', open: false, icon: 'Images/Synonym.png', file: 'src/User_databases/POS/Synonyms/Products.html' },
+                                { id: 23, pId: 15, name: 'dbo.SP_AddInvoice', open: false, icon: 'Images/Synonym.png', file: 'src/User_databases/POS/Synonyms/SP_AddInvoice.html' },
+                                { id: 24, pId: 15, name: 'dbo.SP_AddNewCustomer', open: false, icon: 'Images/Synonym.png', file: 'src/User_databases/POS/Synonyms/SP_AddNewCustomer.html' },
+                                { id: 25, pId: 15, name: 'dbo.SP_GetMonthlyRepor', open: false, icon: 'Images/Synonym.png', file: 'src/User_databases/POS/Synonyms/SP_GetMonthlyRepor.html' },
+                                { id: 26, pId: 15, name: 'dbo.SP_ShowStockStatusByCategory', open: false, icon: 'Images/Synonym.png', file: 'src/User_databases/POS/Synonyms/SP_ShowStockStatusByCategory.html' },
+                                { id: 27, pId: 15, name: 'dbo.SP_SoftDeleteCustomer', open: false, icon: 'Images/Synonym.png', file: 'src/User_databases/POS/Synonyms/SP_SoftDeleteCustomer.html' },
+                                { id: 28, pId: 15, name: 'dbo.SP_TopCustomers', open: false, icon: 'Images/Synonym.png', file: 'src/User_databases/POS/Synonyms/SP_TopCustomers.html' },
+                                { id: 29, pId: 15, name: 'dbo.V_SalesPerMonthEveryYear', open: false, icon: 'Images/Synonym.png', file: 'src/User_databases/POS/Synonyms/V_SalesPerMonthEveryYear.html' },
+                                { id: 30, pId: 15, name: 'dbo.V_UnpaidInvoices', open: false, icon: 'Images/Synonym.png', file: 'src/User_databases/POS/Synonyms/V_UnpaidInvoices.html' },
+
+                                { id: 31, pId: 1, name: 'Programmability', open: false, icon: 'Images/folder.png' },
+                                { id: 32, pId: 31, name: 'Stored Procedures', open: false, icon: 'Images/folder.png', file: 'src/User_databases/POS/Programmability/Stored_Procedures/Stored_Procedures.html' },
+                                { id: 33, pId: 32, name: 'finance.SP_GetMonthlyReport', open: false, icon: 'Images/StoredProcedure.png', file: 'src/User_databases/POS/Programmability/Stored_Procedures/SP_GetMonthlyReport.html' },
+                                { id: 34, pId: 32, name: 'operation.SP_AddInvoice', open: false, icon: 'Images/StoredProcedure.png', file: 'src/User_databases/POS/Programmability/Stored_Procedures/SP_AddInvoice.html' },
+                                { id: 35, pId: 32, name: 'operation.SP_AddNewCustomer', open: false, icon: 'Images/StoredProcedure.png', file: 'src/User_databases/POS/Programmability/Stored_Procedures/SP_AddNewCustomer.html' },
+                                { id: 36, pId: 32, name: 'operation.SP_SoftDeleteCustomer', open: false, icon: 'Images/StoredProcedure.png', file: 'src/User_databases/POS/Programmability/Stored_Procedures/SP_SoftDeleteCustomer.html' },
+                                { id: 37, pId: 32, name: 'pub.SP_ShowStockStatusByCategory', open: false, icon: 'Images/StoredProcedure.png', file: 'src/User_databases/POS/Programmability/Stored_Procedures/SP_ShowStockStatusByCategory.html' },
+                                { id: 38, pId: 32, name: 'pub.SP_TopCustomers', open: false, icon: 'Images/StoredProcedure.png', file: 'src/User_databases/POS/Programmability/Stored_Procedures/SP_TopCustomers.html' },
+
+                                { id: 39, pId: 1, name: 'Functions', open: false, icon: 'Images/folder.png' },
+                                { id: 40, pId: 39, name: 'Table-valued Functions', open: false, icon: 'Images/folder.png', file: 'src/User_databases/POS/Programmability/Functions/Table-valued_Functions/Table-valued_Functions.html' },
+                                { id: 41, pId: 40, name: 'dbo.fn_SalesPerformanceByMonth', open: false, icon: 'Images/Function_Table.png', file: 'src/User_databases/POS/Programmability/Functions/Table-valued_Functions/fn_SalesPerformanceByMonth.html' },
+
+                                { id: 42, pId: 1, name: 'Types', open: false, icon: 'Images/folder.png' },
+                                { id: 43, pId: 42, name: 'User-Defined Table Types', open: false, icon: 'Images/folder.png', file: 'src/User_databases/POS/Programmability/Types/User-Defined_Table_Types/User-Defined_Table_Types.html' },
+                                { id: 44, pId: 43, name: 'dbo.InvoiceItems_TYPE', open: false, icon: 'Images/UserDefinedTableType.png', file: 'src/User_databases/POS/Programmability/Types/User-Defined_Table_Types/InvoiceItems_TYPE.html' },
+
+                                { id: 45, pId: 1, name: 'Security', open: false, icon: 'Images/folder.png' },
+
+                                { id: 61, pId: 45, name: 'Schemas', open: false, icon: 'Images/folder.png', file: 'src/User_databases/POS/Security/Schemas/Schemas.html' },
+                                { id: 62, pId: 61, name: 'finance', open: false, icon: 'Images/Schema.png', file: 'src/User_databases/POS/Security/Schemas/finance.html' },
+                                { id: 63, pId: 61, name: 'identity', open: false, icon: 'Images/Schema.png', file: 'src/User_databases/POS/Security/Schemas/identity.html' },
+                                { id: 64, pId: 61, name: 'masterdata', open: false, icon: 'Images/Schema.png', file: 'src/User_databases/POS/Security/Schemas/masterdata.html' },
+                                { id: 65, pId: 61, name: 'operation', open: false, icon: 'Images/Schema.png', file: 'src/User_databases/POS/Security/Schemas/operation.html' },
+                                { id: 66, pId: 61, name: 'pub', open: false, icon: 'Images/Schema.png', file: 'src/User_databases/POS/Security/Schemas/pub.html' }
+                            ];
+                        </script>
+
+                        <div class="ztree" id="newTree"></div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
