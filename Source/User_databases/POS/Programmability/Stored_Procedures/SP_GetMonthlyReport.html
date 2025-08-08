@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <title>finance.SP_GetMonthlyReport</title>
+    <link rel="stylesheet" href="../../../../../Style/Master.css" type="text/css">
+    <script src="../../../../../Scripts/jquery-1.9.1.js" type="text/javascript"></script>
+    <script src="../../../../../Scripts/sections.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="wrap">
+        <div id="container">
+            <div id="header">
+                <div id="breadcrumbs">
+                    Project &gt; Database Properties &gt; Programmability &gt; Stored Procedures &gt; finance.SP_GetMonthlyReport
+                </div>
+                <div id="headerText">
+                    Author: &#160;Reza FerdosAra
+                </div>
+            </div>
+
+            <div id="pageTitle">
+                <img src="../../../../../Images/StoredProcedure32.png" alt="Stored Procedures" title="Stored Procedures" class="StoredProcedure32"> 
+                [finance].[SP_GetMonthlyReport]
+            </div>
+
+            <div class="panel panel-default panel-collapsible">
+                <div class="panel-heading">
+                    <div class="expandCollapse">
+                        <img src="../../../../../Images/collapsed.png" alt="collapsed" title="collapsed" class="collapsed" style="display:none;">
+                        <img src="../../../../../Images/expanded.png" alt="expanded" title="expanded" class="expanded" style="">
+                    </div>
+                    <a name="properties">Properties</a>
+                </div>
+                <div class="panel-body">
+                    <table cellspacing="1" border="0" class="dataTable table-hover">
+                        <tbody>
+                            <tr>
+                                <th>Property</th>
+                                <th>Value</th>
+                            </tr>
+                            <tr>
+                                <td>ANSI Nulls On</td>
+                                <td><span class="do-yes">True</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="panel panel-default panel-collapsible">
+                <div class="panel-heading">
+                    <div class="expandCollapse">
+                        <img src="../../../../../Images/collapsed.png" alt="collapsed" title="collapsed" class="collapsed" style="display:none;">
+                        <img src="../../../../../Images/expanded.png" alt="expanded" title="expanded" class="expanded" style="">
+                    </div>
+                    <a name="parameters">Parameters</a>
+                </div>
+                <div class="panel-body">
+                    <table cellspacing="1" border="0" class="dataTable table-hover">
+                        <tbody>
+                            <tr>
+                                <th>Name</th>
+                                <th>Data Type</th>
+                                <th>Max Length (Bytes)</th>
+                            </tr>
+                            <tr>
+                                <td>@Month</td>
+                                <td>int</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>@Year</td>
+                                <td>int</td>
+                                <td>4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+
+
+<div class="panel panel-default panel-collapsible">
+  <div class="panel-heading">
+    <div class="expandCollapse">
+      <img src="../../../../../Images/collapsed.png" alt="collapsed" title="collapsed" class="collapsed" style="display:none;">
+      <img src="../../../../../Images/expanded.png" alt="expanded" title="expanded" class="expanded" style="">
+    </div>
+    <a name="sqlscript">SQL Script</a>
+  </div>
+  <div class="panel-body">
+    <div id="sqlScript">
+      <span class="sqlScriptsKeyword">CREATE</span> &nbsp;&nbsp;
+      <span class="sqlScriptsKeyword">PROCEDURE</span> <span class="sqlScriptsNormal">[finance]</span><span class="sqlScriptsOperator">.</span><span class="sqlScriptsNormal">[SP_GetMonthlyReport]</span> <span class="sqlScriptsNormal">@Month</span> <span class="sqlScriptsKeyword">INT</span> <span class="sqlScriptsOperator">=</span> <span class="sqlScriptsNormal">NULL</span><span class="sqlScriptsNormal">,</span> <span class="sqlScriptsNormal">@Year</span> <span class="sqlScriptsKeyword">INT</span> <span class="sqlScriptsOperator">=</span> <span class="sqlScriptsNormal">NULL</span><br>
+      <span class="sqlScriptsKeyword">WITH</span> <span class="sqlScriptsKeyword">ENCRYPTION</span><br>
+      <span class="sqlScriptsKeyword">AS</span><br>
+      <span class="sqlScriptsKeyword">BEGIN</span><br>
+      &nbsp;&nbsp;<span class="sqlScriptsKeyword">SET</span> <span class="sqlScriptsNormal">NOCOUNT</span> <span class="sqlScriptsKeyword">ON</span><br><br>
+      &nbsp;&nbsp;<span class="sqlScriptsKeyword">IF</span> <span class="sqlScriptsNormal">@Year</span> <span class="sqlScriptsKeyword">IS</span> <span class="sqlScriptsKeyword">NULL</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="sqlScriptsKeyword">SET</span> <span class="sqlScriptsNormal">@Year</span> <span class="sqlScriptsOperator">=</span> <span class="sqlScriptsNormal">YEAR(SYSDATETIME())</span><br><br>
+      &nbsp;&nbsp;<span class="sqlScriptsKeyword">IF</span> <span class="sqlScriptsNormal">@Month</span> <span class="sqlScriptsKeyword">IS</span> <span class="sqlScriptsKeyword">NULL</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="sqlScriptsKeyword">SET</span> <span class="sqlScriptsNormal">@Month</span> <span class="sqlScriptsOperator">=</span> <span class="sqlScriptsNormal">MONTH(SYSDATETIME())</span><br><br>
+      &nbsp;&nbsp;<span class="sqlScriptsOperator">;</span><span class="sqlScriptsKeyword">WITH</span> <span class="sqlScriptsNormal">t</span> <span class="sqlScriptsKeyword">AS</span> <span class="sqlScriptsNormal">(</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="sqlScriptsKeyword">SELECT</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sqlScriptsNormal">i.InvoiceID</span><span class="sqlScriptsNormal">,</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sqlScriptsNormal">i.CustomerID</span><span class="sqlScriptsNormal">,</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sqlScriptsNormal">i.InvoiceDate</span><span class="sqlScriptsNormal">,</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sqlScriptsNormal">i.TotalAmount</span><span class="sqlScriptsNormal">,</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sqlScriptsNormal">pm.PayName</span> <span class="sqlScriptsKeyword">AS</span> <span class="sqlScriptsNormal">Payment_Status</span><span class="sqlScriptsNormal">,</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sqlScriptsNormal">MONTH(i.InvoiceDate)</span> <span class="sqlScriptsKeyword">AS</span> <span class="sqlScriptsNormal">mont</span><span class="sqlScriptsNormal">,</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sqlScriptsNormal">YEAR(i.InvoiceDate)</span> <span class="sqlScriptsKeyword">AS</span> <span class="sqlScriptsNormal">year</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="sqlScriptsKeyword">FROM</span> <span class="sqlScriptsNormal">finance.Invoices</span> <span class="sqlScriptsNormal">i</span> <span class="sqlScriptsKeyword">JOIN</span> <span class="sqlScriptsNormal">finance.PaymentMethod</span> <span class="sqlScriptsNormal">pm</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="sqlScriptsKeyword">ON</span> <span class="sqlScriptsNormal">i.Payment_Status</span> <span class="sqlScriptsOperator">=</span> <span class="sqlScriptsNormal">pm.PayID</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="sqlScriptsKeyword">WHERE</span> <span class="sqlScriptsNormal">YEAR(i.InvoiceDate)</span> <span class="sqlScriptsOperator">=</span> <span class="sqlScriptsNormal">@Year</span> <span class="sqlScriptsKeyword">AND</span> <span class="sqlScriptsNormal">MONTH(i.InvoiceDate)</span> <span class="sqlScriptsOperator">=</span> <span class="sqlScriptsNormal">@Month</span><br>
+      &nbsp;&nbsp;<span class="sqlScriptsNormal">)</span><br><br>
+      &nbsp;&nbsp;<span class="sqlScriptsKeyword">SELECT</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="sqlScriptsKeyword">CASE</span> <span class="sqlScriptsKeyword">WHEN</span> <span class="sqlScriptsNormal">GROUPING(t.InvoiceID)</span> <span class="sqlScriptsOperator">=</span> <span class="sqlScriptsNormal">1</span> <span class="sqlScriptsKeyword">THEN</span> <span class="sqlScriptsKeyword">COUNT</span><span class="sqlScriptsNormal">(</span><span class="sqlScriptsKeyword">DISTINCT</span> <span class="sqlScriptsNormal">t.InvoiceID</span><span class="sqlScriptsNormal">)</span> <span class="sqlScriptsKeyword">ELSE</span> <span class="sqlScriptsNormal">t.InvoiceID</span> <span class="sqlScriptsKeyword">END</span> <span class="sqlScriptsKeyword">AS</span> <span class="sqlScriptsNormal">InvoiceID</span><span class="sqlScriptsNormal">,</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="sqlScriptsNormal">t.CustomerID</span><span class="sqlScriptsNormal">,</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="sqlScriptsNormal">t.InvoiceDate</span><span class="sqlScriptsNormal">,</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="sqlScriptsNormal">t.TotalAmount</span><span class="sqlScriptsNormal">,</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="sqlScriptsNormal">t.Payment_Status</span><span class="sqlScriptsNormal">,</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="sqlScriptsKeyword">COUNT</span><span class="sqlScriptsNormal">(ii.InvoiceItemID)</span> <span class="sqlScriptsKeyword">AS</span> <span class="sqlScriptsNormal">InvoiceItems</span><br>
+      &nbsp;&nbsp;<span class="sqlScriptsKeyword">FROM</span> <span class="sqlScriptsNormal">t</span><br>
+      &nbsp;&nbsp;<span class="sqlScriptsKeyword">INNER JOIN</span> <span class="sqlScriptsNormal">finance.InvoiceItems</span> <span class="sqlScriptsNormal">ii</span> <span class="sqlScriptsKeyword">ON</span> <span class="sqlScriptsNormal">t.InvoiceID</span> <span class="sqlScriptsOperator">=</span> <span class="sqlScriptsNormal">ii.InvoiceID</span><br>
+      &nbsp;&nbsp;<span class="sqlScriptsKeyword">GROUP BY</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="sqlScriptsKeyword">GROUPING SETS</span> <span class="sqlScriptsNormal">(</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="sqlScriptsNormal">()</span><span class="sqlScriptsNormal">,</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="sqlScriptsNormal">(t.InvoiceID, t.CustomerID, t.InvoiceDate, t.TotalAmount, t.Payment_Status)</span><br>
+      &nbsp;&nbsp;<span class="sqlScriptsNormal">)</span><br>
+      <span class="sqlScriptsKeyword">ORDER BY</span><br>
+      &nbsp;&nbsp;<span class="sqlScriptsKeyword">CASE</span> <span class="sqlScriptsKeyword">WHEN</span> <span class="sqlScriptsNormal">GROUPING(t.InvoiceID)</span> <span class="sqlScriptsOperator">=</span> <span class="sqlScriptsNormal">1</span> <span class="sqlScriptsKeyword">THEN</span> <span class="sqlScriptsNormal">1</span> <span class="sqlScriptsKeyword">ELSE</span> <span class="sqlScriptsNormal">0</span> <span class="sqlScriptsKeyword">END</span><span class="sqlScriptsNormal">,</span><br>
+      &nbsp;&nbsp;<span class="sqlScriptsNormal">t.InvoiceDate</span><br>
+      <span class="sqlScriptsKeyword">END</span><br>
+      <span class="sqlScriptsNormal">GO</span><br>
+
+
+        </div>
+    </div>
+
+    <div id="footer">
+        <div class="row">
+            <div id="customtext" class="col-sm-4">
+                <div id="projectauthor"></div>
+            </div>
+            <div id="copyright" class="col-sm-4">&#160;rezaferdosara.ir</div>
+            <div id="date" class="col-sm-4">Created: 8/3/2025 7:53:00 PM</div>
+        </div>
+    </div>
+</body>
+</html>
